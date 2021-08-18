@@ -1,0 +1,17 @@
+{
+    "name": "gleb/router",
+    "authors": [
+        {
+            "name": "Gleb Vasylenko",
+            "email": "hleb.v@platinumlist.pro"
+        }
+    ],
+    "require": {
+        "symfony/http-foundation": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ruter\\": "src/"
+        }
+    }
+}
