@@ -4,8 +4,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 use Ruter\Route;
 use Ruter\Router;
-use Ruter\Route\Common\Match;
 use Ruter\Request\Request;
+use Ruter\Route\Common\Match;
+use Ruter\Route\Decoration\Method;
 use Ruter\Request\RequestInterface;
 use Ruter\Route\Contract\RouteInterface;
 use Ruter\Route\Contract\MatchInterface;
@@ -59,6 +60,10 @@ $routes = [
         'update' => Route::patch('/{id}', [new UserController(), 'update']),
         'delete' => Route::delete('/{id}', [new UserController(), 'delete']),
     ]),
+
+    // Your own route implementation for anyway, decorated by request method guard, 
+    // which will be matched only on POST, and PUT request methods
+    'my_post_or_put_route' => new Method(['POST', 'PUT'], new MyRoute()),
 
     // Your own route implementation for anyway, just need to implement Ruter\Route\Contracts\RouteInterface
     'my_route' => new MyRoute(),
