@@ -25,6 +25,14 @@ class PatternTest extends TestCase
         $this->assertEquals([], $match->extra());
     }
 
+    public function testMatchWithQueryStringInUri(): void
+    {
+        $route = new Pattern('/uri');
+        $match = $route->match(new Request('/uri?foo=bar'));
+        $this->assertTrue($match->isSuccessfull());
+        $this->assertEquals([], $match->extra());
+    }
+
     public function testMatchWithoutPlaceholders(): void
     {
         $uri   = '/uri';
