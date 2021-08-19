@@ -9,11 +9,6 @@ class Request implements RequestInterface
 {
     private BaseRequest $baseRequest;
 
-    private array $params  = [];
-    private array $cookies = [];
-    private array $files   = [];
-    private array $server  = [];
-
     public function __construct(
         string $uri,
         string $method  = '',
@@ -37,10 +32,10 @@ class Request implements RequestInterface
         $this->baseRequest = BaseRequest::create(
             $uri,
             $method,
-            $this->params  = $params,
-            $this->cookies = $cookies,
-            $this->files   = $files,
-            $this->server  = $server
+            $params,
+            $cookies,
+            $files,
+            $server
         );
     }
 
@@ -57,6 +52,11 @@ class Request implements RequestInterface
     public function method(): string
     {
         return $this->baseRequest->getMethod();
+    }
+
+    public function params(): array
+    {
+        return $this->queryParams() + $this->queryParams();
     }
 
     public function queryParams(): array
@@ -87,15 +87,22 @@ class Request implements RequestInterface
                     ->all();
     }
 
+    public function cookies(): array
+    {
+        return $this->baseRequest
+                    ->cookies
+                    ->all();
+    }
+
     public function withUri(string $uri): self
     {
         return new static(
             $uri, 
             $this->method(),
-            $this->params,
-            $this->cookies,
-            $this->files,
-            $this->server
+            $this->params(),
+            $this->cookies(),
+            $this->files(),
+            $this->baseRequest->server->all()
         );
     }
 }
