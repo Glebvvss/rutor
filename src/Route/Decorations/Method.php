@@ -30,7 +30,7 @@ class Method implements RouteInterface
         }
 
         $this->methods = $methods;
-        $this->route        = $route;
+        $this->route   = $route;
     }
 
     public function match(RequestInterface $request): MatchInterface
