@@ -25,6 +25,22 @@ class PatternTest extends TestCase
         $this->assertEquals([], $match->extra());
     }
 
+    public function testMatchWithoutSlashAtStartEverywhere(): void
+    {
+        $route = new Pattern('no-stash-at-start-uri');
+        $match = $route->match(new Request('no-stash-at-start-uri'));
+        $this->assertTrue($match->isSuccessfull());
+        $this->assertEquals([], $match->extra());
+    }
+
+    public function testMatchWithoutSlashAtStartInPattern(): void
+    {
+        $route = new Pattern('enything');
+        $match = $route->match(new Request('/enything'));
+        $this->assertTrue($match->isSuccessfull());
+        $this->assertEquals([], $match->extra());
+    }
+
     public function testMatchWithQueryStringInUri(): void
     {
         $route = new Pattern('/uri');

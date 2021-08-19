@@ -13,6 +13,13 @@ class TemplateTest extends TestCase
         $this->assertEquals('~^/uri$~ui', $template->toRegExp());
         $this->assertEquals([], $template->params());
     }
+
+    public function testWithoutSlashAtStart(): void
+    {
+        $template = new Template('uri');
+        $this->assertEquals('~^/uri$~ui', $template->toRegExp());
+        $this->assertEquals([], $template->params());
+    }
     
     public function testWithSingleParam(): void
     {

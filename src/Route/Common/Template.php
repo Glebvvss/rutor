@@ -10,7 +10,7 @@ class Template
 
     public function __construct(string $template)
     {
-        $this->template = $template;
+        $this->template = '/' . ltrim($template, '/');
     }
 
     public function toRegExp(): string
