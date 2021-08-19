@@ -4,8 +4,8 @@ namespace Ruter\Route;
 
 use Ruter\Route\Common\Match;
 use Ruter\Request\RequestInterface;
-use Ruter\Route\Contracts\RouteInterface;
-use Ruter\Route\Contracts\MatchInterface;
+use Ruter\Route\Contract\RouteInterface;
+use Ruter\Route\Contract\MatchInterface;
 
 class Stub implements RouteInterface
 {

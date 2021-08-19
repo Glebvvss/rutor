@@ -2,7 +2,7 @@
 
 namespace Ruter\Route\Common;
 
-use Ruter\Route\Contracts\MatchInterface;
+use Ruter\Route\Contract\MatchInterface;
 
 class Match implements MatchInterface
 {

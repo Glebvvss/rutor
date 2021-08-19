@@ -1,6 +1,6 @@
 <?php
 
-namespace Ruter\Route\Contracts;
+namespace Ruter\Route\Contract;
 
 use Ruter\Request\RequestInterface;
 

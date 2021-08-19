@@ -1,12 +1,12 @@
 <?php
 
-namespace Ruter\Route\Decorations;
+namespace Ruter\Route\Decoration;
 
 use InvalidArgumentException;
 use Ruter\Route\Common\Match;
 use Ruter\Request\RequestInterface;
-use Ruter\Route\Contracts\RouteInterface;
-use Ruter\Route\Contracts\MatchInterface;
+use Ruter\Route\Contract\RouteInterface;
+use Ruter\Route\Contract\MatchInterface;
 
 class Method implements RouteInterface
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Test\Route\Decorations;
+namespace Test\Route\Decoration;
 
 use Ruter\Route;
 use Ruter\Request\Request;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Ruter\Route\Decorations\Callback;
+use Ruter\Route\Decoration\Callback;
 
 class CallbackTest extends TestCase
 {

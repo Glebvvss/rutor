@@ -5,9 +5,9 @@ namespace Ruter;
 use Ruter\Route\Group;
 use Ruter\Route\Pattern;
 use Ruter\Request\RequestInterface;
-use Ruter\Route\Decorations\Method;
-use Ruter\Route\Decorations\Callback;
-use Ruter\Route\Contracts\RouteInterface;
+use Ruter\Route\Decoration\Method;
+use Ruter\Route\Decoration\Callback;
+use Ruter\Route\Contract\RouteInterface;
 
 class Route
 {

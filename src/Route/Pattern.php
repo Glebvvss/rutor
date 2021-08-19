@@ -5,8 +5,8 @@ namespace Ruter\Route;
 use Ruter\Route\Common\Match;
 use Ruter\Route\Common\Template;
 use Ruter\Request\RequestInterface;
-use Ruter\Route\Contracts\RouteInterface;
-use Ruter\Route\Contracts\MatchInterface;
+use Ruter\Route\Contract\RouteInterface;
+use Ruter\Route\Contract\MatchInterface;
 
 class Pattern implements RouteInterface
 {

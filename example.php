@@ -7,8 +7,8 @@ use Ruter\Router;
 use Ruter\Route\Common\Match;
 use Ruter\Request\Request;
 use Ruter\Request\RequestInterface;
-use Ruter\Route\Contracts\RouteInterface;
-use Ruter\Route\Contracts\MatchInterface;
+use Ruter\Route\Contract\RouteInterface;
+use Ruter\Route\Contract\MatchInterface;
 
 class UserController {
     public function all() {}

@@ -1,12 +1,12 @@
 <?php
 
-namespace Test\Route\Decorations;
+namespace Test\Route\Decoration;
 
 use Ruter\Route;
 use Ruter\Request\Request;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use Ruter\Route\Decorations\Method;
+use Ruter\Route\Decoration\Method;
 
 class MethodTest extends TestCase
 {

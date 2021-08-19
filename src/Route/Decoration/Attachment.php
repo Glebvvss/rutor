@@ -1,18 +1,18 @@
 <?php
 
-namespace Ruter\Route\Decorations;
+namespace Ruter\Route\Decoration;
 
 use Ruter\Route\Common\Match;
 use Ruter\Request\RequestInterface;
-use Ruter\Route\Contracts\RouteInterface;
-use Ruter\Route\Contracts\MatchInterface;
+use Ruter\Route\Contract\RouteInterface;
+use Ruter\Route\Contract\MatchInterface;
 
 class Attachment implements RouteInterface
 {
-    private array          $attachment;
+    private $attachment;
     private RouteInterface $route;
 
-    public function __construct(callable $attachment, RouteInterface $route)
+    public function __construct($attachment, RouteInterface $route)
     {
         $this->attachment = $attachment;
         $this->route      = $route;
@@ -21,12 +21,13 @@ class Attachment implements RouteInterface
     public function match(RequestInterface $request): MatchInterface
     {
         $match = $this->route->match($request);
-        $extra = $match->extra();
-        $extra['_attachment'] = $this->attachment;
-        return new Match(
-            $match->isSuccessfull(),
-            $extra
-        );
+        if ($match->isSuccessfull()) {
+            $extra = $match->extra();
+            $extra['_attachment'] = $this->attachment;
+            return new Match(true, $extra);
+        }
+
+        return $match;
     }
 
     public function toUrl(array $params = []): string
