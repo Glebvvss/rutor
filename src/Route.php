@@ -2,80 +2,26 @@
 
 namespace Ruter;
 
-use Ruter\Route\Group;
-use Ruter\Route\Pattern;
 use Ruter\Request\RequestInterface;
-use Ruter\Route\Decoration\Method;
-use Ruter\Route\Decoration\Callback;
+use Ruter\Route\Contract\MatchInterface;
 use Ruter\Route\Contract\RouteInterface;
 
-class Route
+class Route implements RouteInterface
 {
-    public static function get(string $url, callable $callback): RouteInterface
+    private RouteInterface $route;
+
+    public function __construct(RouteInterface $route)
     {
-        return self::of(
-            [RequestInterface::METHOD_GET],
-            $url,
-            $callback
-        );
+        $this->route = $route;
     }
 
-    public static function post(string $url, callable $callback): RouteInterface
+    public function match(RequestInterface $request): MatchInterface
     {
-        return self::of(
-            [RequestInterface::METHOD_POST],
-            $url,
-            $callback
-        );
+        return $this->route->match($request);
     }
 
-    public static function patch(string $url, callable $callback): RouteInterface
+    public function toUrl(array $params = []): string
     {
-        return self::of(
-            [RequestInterface::METHOD_PATCH], 
-            $url, 
-            $callback
-        );
-    }
-
-    public static function put(string $url, callable $callback): RouteInterface
-    {
-        return self::of(
-            [RequestInterface::METHOD_PUT], 
-            $url, 
-            $callback
-        );
-    }
-
-    public static function delete(string $url, callable $callback): RouteInterface
-    {
-        return self::of(
-            [RequestInterface::METHOD_DELETE], 
-            $url, 
-            $callback
-        );
-    }
-
-    public static function group(string $prefix, array $routes): RouteInterface
-    {
-        return new Group($prefix, $routes);
-    }
-
-    public static function any(string $template, callable $callback): RouteInterface
-    {
-        return new Callback(
-            $callback,
-            new Pattern($template)
-        );
-    }
-
-    public static function of(array $matchMethods, string $template, callable $callback): RouteInterface
-    {
-        return new Callback($callback,
-            new Method(
-                $matchMethods,
-                new Pattern($template)
-            )
-        );
+        return $this->route->toUrl($params);
     }
 }

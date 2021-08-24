@@ -2,6 +2,7 @@
 
 namespace Ruter\Route;
 
+use Ruter\Route;
 use InvalidArgumentException;
 use Ruter\Route\Common\Match;
 use Ruter\Request\RequestInterface;
