@@ -9,6 +9,18 @@ class Request implements RequestInterface
 {
     private BaseRequest $baseRequest;
 
+    public static function fromGlobals()
+    {
+        return new self(
+            $_SERVER['REQUEST_URI'],
+            $_SERVER['REQUEST_METHOD'],
+            $_REQUEST,
+            $_COOKIE,
+            $_FILES,
+            $_SERVER
+        );
+    }
+
     public function __construct(
         string $uri,
         string $method  = '',
