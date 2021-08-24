@@ -75,7 +75,7 @@ $routes = [
 ];
 
 $router = new Router($routes);
-$match  = $router->match(new Request('/asdfasdf'));
+$match  = $router->match(Request::fromGlobals());
 if ($match->isSuccessfull()) {
     // Extra data, which has provided to route match result
     print_r($match->extra());
